@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="TicTacToeDomain.fs" />
+        <Compile Include="Library.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.TextMeshPro.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Assets\&quot;" />
+      <Exec Command="copy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(ProjectDir)\..\Assets\&quot;" />
+    </Target>
+
+</Project>
